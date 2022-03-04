@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2022 at 05:58 PM
+-- Generation Time: Mar 04, 2022 at 08:37 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hotel`
+-- Database: `hotel_ku`
 --
 
 -- --------------------------------------------------------
@@ -39,13 +39,13 @@ CREATE TABLE `tb_fasilitas_kamar` (
 --
 
 INSERT INTO `tb_fasilitas_kamar` (`id`, `id_kamar`, `fasilitas`, `gambar`) VALUES
-(1, 1, 'TV LCD 32 Inch', 'image/satu.jpg'),
-(2, 1, 'Air Mineral 2 botol', 'image/dua.jpg'),
-(3, 1, 'AC full Politron', 'image/tiga.jpg'),
-(4, 2, 'TV LCD 32 Inch HD Resolution', 'image/satu.jpg'),
-(5, 2, 'AC Full Sharp', 'image/dua.jpg'),
-(6, 2, 'Air Mineral 2 Botol', 'image/tiga.jpg'),
-(7, 6, 'TV 32 Inc All Channel', '');
+(1, 1, 'TV LCD 32 Inch', 'image/TVLCD32Inch20220305033325am.jpg'),
+(2, 1, 'Air Mineral 2 botol', 'image/AirMineral2botol20220305033336am.jpg'),
+(3, 1, 'AC full Politron', 'image/ACfullPolitron20220305033349am.jpg'),
+(4, 2, 'TV LCD 32 Inch HD Resolution', 'image/TVLCD32InchHDResolution20220305033059am.jpg'),
+(5, 2, 'AC Full Sharp', 'image/ACFullSharp20220305032903am.jpg'),
+(6, 1, 'Air Mineral 2 Botol 1', 'image/AirMineral2Botol120220305032839am.jpg'),
+(20, 1, 'Piano Mini', 'image/PianoMini20220305032536am.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,11 +67,7 @@ CREATE TABLE `tb_fasilitas_umum` (
 INSERT INTO `tb_fasilitas_umum` (`id`, `nama_fasilitas`, `keterangan`, `gambar`) VALUES
 (1, 'Kolam Renang', 'Berada pada samping Lantai 1 dengan luas 6m persegi', 'image/tiga.jpg'),
 (2, 'Lapangan Badminton', 'Berada pada lantai 5 dengan luas 50m persegi', 'image/dua.jpg'),
-(3, 'Tempat Santai', 'Berada pada Lantai 12 menghadap Sunrise', 'image/satu.jpg'),
-(4, 'Lapangan Basket', 'Berada pada lantai 3 sebela kanan kamar mandi', ''),
-(5, 'Gym', 'Berada pada lantai satu sebelah kanan ruang resepsionis', ''),
-(6, '', '', ''),
-(7, '', '', '');
+(3, 'Tempat Santai', 'Berada pada Lantai 12 menghadap Sunrise', 'image/satu.jpg');
 
 -- --------------------------------------------------------
 
@@ -214,7 +210,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_fasilitas_kamar`
 --
 ALTER TABLE `tb_fasilitas_kamar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tb_fasilitas_umum`

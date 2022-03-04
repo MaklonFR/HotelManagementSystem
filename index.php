@@ -62,7 +62,7 @@
      <!-- Mulai Script Panggil SlideShow Dari Tabel Fasilitas Umum menggunakan PHP -->
         <?php
             $aktif="active";
-            $sql = "SELECT * FROM tb_fasilitas_umum ORDER BY id ASC LIMIT 3";
+            $sql = "SELECT * FROM tb_fasilitas_umum ORDER BY id DESC LIMIT 3";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
               //membaca data pada baris tabel

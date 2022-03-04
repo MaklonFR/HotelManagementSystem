@@ -34,7 +34,7 @@
           </thead>
           <tbody>
             <?php
-              $sql="SELECT * FROM tb_fasilitas_kamar JOIN tb_kamar ON tb_fasilitas_kamar.id_kamar = tb_kamar.id_kamar ORDER BY id DESC LIMIT 5";
+              $sql="SELECT * FROM tb_fasilitas_kamar JOIN tb_kamar ON tb_fasilitas_kamar.id_kamar = tb_kamar.id_kamar ORDER BY id DESC LIMIT 20";
               $result= $conn->query($sql);
               if ($result->num_rows > 0 ) {
                 while ($row = $result->fetch_assoc())
@@ -44,8 +44,8 @@
             <tr>
                 <td><?php echo $row["nama_kamar"]; ?></td>
                 <td class="text-center"><?php echo $row["fasilitas"]; ?></td>
-                <td class="text-center"><a href="#" data-id="" class="btn btn-success" onClick="show_modal_fasilitas_kamar(this.id)" id="<?php echo $row["id"]; ?>">Lihat</a> 
-                    <a href="#" data-id="" class="btn btn-primary" onClick="check_modal_fasilitas_kamar(this.id)" id="<?php echo $row["id"]; ?>">Edit</a>
+                <td class="text-center"><a href="#" data-id="" class="btn btn-success" onClick="show_modal_fasilitas_kamar(this.id, 1)" id="<?php echo $row["id"]; ?>">Lihat</a> 
+                    <a href="#" data-id="" class="btn btn-primary" onClick="show_modal_fasilitas_kamar(this.id, 0)" id="<?php echo $row["id"]; ?>">Edit</a>
                 </td>
             </tr>
             <?php
@@ -100,8 +100,8 @@
           </div>
           
           <div class="mb-3 mt-3">
-            <label for="upload_fasilitas">Pilih Gambar:</label>
-            <input type="file" class="form-control" id="upload_fasilitas">        
+            <label for="upload_fasilitas">Pilih Gambar ( Dimensi: 1220 x 360 )</label>
+            <input type="file" class="form-control" id="foto" name="foto">        
           </div>
 
         </form>
@@ -117,6 +117,7 @@
   </div>
 </div>
 <!------------------------------ Script Akhir Modal Tambah Fasilitas ------------------------------ -->
+
 
 <!----------------------------- Script Awal Modal Lihat Data Fasilitas -------------------------------- -->
 <div class="modal fade" id="lihat_data_fasilitas">
@@ -146,15 +147,16 @@
     $("#modal_tambah_fasilitas").modal('toggle');
   }
   
-  function show_modal_fasilitas_kamar(id)
+  function show_modal_fasilitas_kamar(id,cek)
   {
+    //alert(cek); return;
     $("#lihat_data_fasilitas").modal('toggle');
     $.ajax({
      url: "proses/tampil_fasilitas.php",
      method: "GET",
      data:{
-		   idp:id
-	      },
+		        idp:id, cek:cek
+	        },
      success: function(data)
       {
         $("#tampil_fasilitas").html(data).refresh;
@@ -162,30 +164,54 @@
     });
   }
 
+/*BAGIAN ADD*/
 $(function(){	
    $("#add_fasilitas_kamar").on('click', function(){
      var idkamar        = $("#idkamar").val();
      var nama_fasilitas = $("#nama_fasilitas").val();
-     document.getElementById("form_fu").reset();
-
+     var gambar         = $("#foto").val();
+     var form_data      = new FormData(); 
+     
 	 if ( (idkamar=="") || (nama_fasilitas==""))
 	 {
         alert("Terjadi kesalahan. Ada data yang kosong!");
         return;
 	 }
+   if (gambar=="")
+    {
+    alert("Terjadi kesalahan. Gambar kosong!");
+       return;
+    }
+
+   var oFReader = new FileReader();
+   oFReader.readAsDataURL(document.getElementById("foto").files[0]);
+   var f = document.getElementById("foto").files[0];
+   var fsize = f.size||f.fileSize;
+   if(fsize > 2000000)
+   {
+    alert("Terjadi kesalahan. Gambar Besar!");
+   return;
+   }
+   else
+   {
+      form_data.append("idkamar",idkamar);
+      form_data.append("foto",  document.getElementById('foto').files[0]);
+      form_data.append("nama_fasilitas",nama_fasilitas);
+      form_data.append("gambar",gambar);
 	 
      $.ajax({
      url: "proses/tambah_fasilitas_kamar.php",
      method: "POST",
-     data:{
-           idkamar:idkamar, 
-           nama_fasilitas: nama_fasilitas
-	      },
+     data: form_data,
+     contentType: false,
+     cache: false,
+     processData: false,
      success: function(data)
       {
         //alert(data);return;
         if (data=="OK") 
-         {
+         {           
+          document.getElementById("form_fu").reset();
           alert("Data Tersimpan!")
           window.location.href="index.php?id=fasilitas_kamar";
 		     } 
@@ -196,7 +222,9 @@ $(function(){
 	     } 
 
       });  
-    });
+     }
+
+   });
 	
 });
 

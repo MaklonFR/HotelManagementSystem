@@ -2,7 +2,7 @@
 $namaserver = "localhost";
 $username = "root";
 $password = "";
-$database= "hotel";
+$database= "hotel_ku";
 
 // Create connection
 $conn = new mysqli($namaserver, $username, $password, $database);
