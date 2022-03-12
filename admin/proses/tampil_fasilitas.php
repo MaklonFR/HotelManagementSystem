@@ -33,6 +33,7 @@ if ($cek == 1) {
      </tr>
   </tbody>
  </table>
+ 
 <?php } else if ($cek==0) { ?> 
  
 <form id="edit_form_fu">

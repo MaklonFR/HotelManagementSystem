@@ -75,7 +75,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form id="form_fk">
+        <form id="form_fu">
           <div class="mb-3 mt-3 form-floating">
             <input type="text" class="form-control" id="nama_fasilitas_umum" name="nama_fasilitas_umum">
             <label for="nama_fasilitas_umum">Nama Fasilitas</label>
@@ -86,7 +86,7 @@
           </div>
           <div class="mb-3 mt-3">
             <label for="upload_fasilitas">Pilih Gambar:</label>
-            <input type="file" class="form-control" id="upload_fasilitas">        
+            <input type="file" class="form-control" name="upload_fasilitas" id="upload_fasilitas">        
           </div>
         </form>
 
@@ -149,39 +149,64 @@
 
 $(function(){	
    $("#add_fasilitas_umum").on('click', function(){
-     var nama    = $("#nama_fasilitas_umum").val();
-     var ket     = $("#ket").val();
-     document.getElementById("form_fk").reset();
+     var namafu       = $("#nama_fasilitas_umum").val();
+     var ketfu        = $("#ket").val();
+     var gambarfu     = $("#upload_fasilitas").val();
+     var form_datafu  = new FormData(); 
 
-	 if ( (nama=="") || (ket==""))
+
+	 if ( (namafu=="") || (ketfu==""))
 	 {
         alert("Terjadi kesalahan. Ada data yang kosong!");
         return;
 	 }
+   if (gambarfu=="")
+    {
+    alert("Terjadi kesalahan. Gambar kosong!");
+       return;
+    }
+	 
+   var oFReader = new FileReader();
+   oFReader.readAsDataURL(document.getElementById("upload_fasilitas").files[0]);
+   var f = document.getElementById("upload_fasilitas").files[0];
+   var fsize = f.size||f.fileSize;
+   if(fsize > 2000000)
+   {
+    alert("Terjadi kesalahan. Gambar Besar!");
+    return;
+   }
+   else
+   {
+      form_datafu.append("namafu",namafu);
+      form_datafu.append("fotofu",  document.getElementById('upload_fasilitas').files[0]);
+      form_datafu.append("ketfu",ketfu);
+      form_datafu.append("gambarfu",gambarfu);
 	 
      $.ajax({
      url: "proses/tambah_fasilitas_umum.php",
      method: "POST",
-     data:{
-		       nama:nama, 
-           ket: ket
-	      },
+     data: form_datafu,
+     contentType: false,
+     cache: false,
+     processData: false,
      success: function(data)
       {
         //alert(data);return;
         if (data=="OK") 
          {
-          alert("Data Tersimpan!")
+          alert("Data Tersimpan!");
+          document.getElementById("form_fu").reset();
           window.location.href="index.php?id=fasilitas_umum";
 		     } 
           if (data=="ERROR") 
            {
-            alert("Data TIDAK tersimpan!")
+            alert("Data TIDAK tersimpan!");
 	         }
 	     } 
 
-      });  
-    });
+      }); 
+    } 
+  });
 	
 });
 
