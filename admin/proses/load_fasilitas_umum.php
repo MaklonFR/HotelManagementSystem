@@ -85,7 +85,7 @@
             <label for="tipe_fasilitas">Ketrangan Fasilitas</label>
           </div>
           <div class="mb-3 mt-3">
-            <label for="upload_fasilitas">Pilih Gambar:</label>
+            <label for="upload_fasilitas">Pilih Gambar ( Dimensi: 1220 x 360 ):</label>
             <input type="file" class="form-control" name="upload_fasilitas" id="upload_fasilitas">        
           </div>
         </form>
