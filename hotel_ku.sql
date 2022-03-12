@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2022 at 08:37 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Waktu pembuatan: 12 Mar 2022 pada 06.22
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_fasilitas_kamar`
+-- Struktur dari tabel `tb_fasilitas_kamar`
 --
 
 CREATE TABLE `tb_fasilitas_kamar` (
@@ -35,7 +35,7 @@ CREATE TABLE `tb_fasilitas_kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_fasilitas_kamar`
+-- Dumping data untuk tabel `tb_fasilitas_kamar`
 --
 
 INSERT INTO `tb_fasilitas_kamar` (`id`, `id_kamar`, `fasilitas`, `gambar`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `tb_fasilitas_kamar` (`id`, `id_kamar`, `fasilitas`, `gambar`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_fasilitas_umum`
+-- Struktur dari tabel `tb_fasilitas_umum`
 --
 
 CREATE TABLE `tb_fasilitas_umum` (
@@ -61,18 +61,18 @@ CREATE TABLE `tb_fasilitas_umum` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_fasilitas_umum`
+-- Dumping data untuk tabel `tb_fasilitas_umum`
 --
 
 INSERT INTO `tb_fasilitas_umum` (`id`, `nama_fasilitas`, `keterangan`, `gambar`) VALUES
-(1, 'Kolam Renang', 'Berada pada samping Lantai 1 dengan luas 6m persegi', 'image/tiga.jpg'),
-(2, 'Lapangan Badminton', 'Berada pada lantai 5 dengan luas 50m persegi', 'image/dua.jpg'),
-(3, 'Tempat Santai', 'Berada pada Lantai 12 menghadap Sunrise', 'image/satu.jpg');
+(1, 'Kolam Renang', 'Berada pada samping Lantai 1 dengan luas 6m persegi', 'image/ACfullPolitron20220305033349am.jpg'),
+(2, 'Lapangan Badminton', 'Berada pada lantai 5 dengan luas 50m persegi', 'image/ACFullSharp20220305032903am.jpg'),
+(3, 'Tempat Santai', 'Berada pada Lantai 12 menghadap Sunrise', 'image/TVLCD32Inch20220305033325am.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kamar`
+-- Struktur dari tabel `tb_kamar`
 --
 
 CREATE TABLE `tb_kamar` (
@@ -82,7 +82,7 @@ CREATE TABLE `tb_kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_kamar`
+-- Dumping data untuk tabel `tb_kamar`
 --
 
 INSERT INTO `tb_kamar` (`id_kamar`, `nama_kamar`, `total_kamar`) VALUES
@@ -106,14 +106,18 @@ INSERT INTO `tb_kamar` (`id_kamar`, `nama_kamar`, `total_kamar`) VALUES
 (18, 'Enggel', 3),
 (19, 'Publisher', 7),
 (20, 'Two Many', 6),
-(21, 'Premium dua', 6),
-(22, 'Golang', 6),
-(23, 'Coofee team', 18);
+(21, 'Premium One', 4),
+(22, 'Golang Better', 16),
+(23, 'Coofee team one', 20),
+(24, 'Light new', 12),
+(25, 'Black Thown', 13),
+(26, 'Broen Like', 3),
+(27, 'White dog blur', 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pelanggan`
+-- Struktur dari tabel `tb_pelanggan`
 --
 
 CREATE TABLE `tb_pelanggan` (
@@ -131,7 +135,7 @@ CREATE TABLE `tb_pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_pelanggan`
+-- Dumping data untuk tabel `tb_pelanggan`
 --
 
 INSERT INTO `tb_pelanggan` (`id`, `nama_pemesan`, `email`, `hp`, `nama_tamu`, `tgl_pesan`, `checkin`, `checkout`, `jml_kamar`, `status`, `id_kamar`) VALUES
@@ -150,7 +154,7 @@ INSERT INTO `tb_pelanggan` (`id`, `nama_pemesan`, `email`, `hp`, `nama_tamu`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -161,7 +165,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `tipe`) VALUES
@@ -173,65 +177,65 @@ INSERT INTO `tb_user` (`id`, `username`, `password`, `tipe`) VALUES
 --
 
 --
--- Indexes for table `tb_fasilitas_kamar`
+-- Indeks untuk tabel `tb_fasilitas_kamar`
 --
 ALTER TABLE `tb_fasilitas_kamar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_fasilitas_umum`
+-- Indeks untuk tabel `tb_fasilitas_umum`
 --
 ALTER TABLE `tb_fasilitas_umum`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_kamar`
+-- Indeks untuk tabel `tb_kamar`
 --
 ALTER TABLE `tb_kamar`
   ADD PRIMARY KEY (`id_kamar`);
 
 --
--- Indexes for table `tb_pelanggan`
+-- Indeks untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_fasilitas_kamar`
+-- AUTO_INCREMENT untuk tabel `tb_fasilitas_kamar`
 --
 ALTER TABLE `tb_fasilitas_kamar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `tb_fasilitas_umum`
+-- AUTO_INCREMENT untuk tabel `tb_fasilitas_umum`
 --
 ALTER TABLE `tb_fasilitas_umum`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tb_kamar`
+-- AUTO_INCREMENT untuk tabel `tb_kamar`
 --
 ALTER TABLE `tb_kamar`
-  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `tb_pelanggan`
+-- AUTO_INCREMENT untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
