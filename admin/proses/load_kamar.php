@@ -46,7 +46,7 @@
                 <td><?php echo $row["nama_kamar"]; ?></td>
                 <td class="text-center"><?php echo $row["total_kamar"]; ?></td>
                 <td class="text-center"><a href="#" data-id="" class="btn btn-success" onClick="show_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Lihat</a> 
-                    <a href="#" data-id="" class="btn btn-primary" onClick="check_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Edit</a>
+                    <a href="#" data-id="" class="btn btn-primary" onClick="edit_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Edit</a>
                 </td>
             </tr>
             <?php
@@ -125,6 +125,32 @@
 </div>
 <!----------------------------- Script Akhir Modal Lihat Data Kamar -------------------------------- -->
 
+<!------------------------------ Script Awal Modal EDIT Kamar ------------------------------->
+<div class="modal fade" id="modal_edit_kamar">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Data Kamar</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      
+      <!-- Modal body -->
+      <div id="tedit_kamar" class="modal-body">
+
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="update_kamar">Simpan</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!------------------------------ Script Akhir Modal EDIT Kamar ------------------------------ -->
+
 <script>
  function add_modal_kamar()
   {
@@ -147,11 +173,26 @@
     });
   }
 
+  function edit_modal_kamar(id)
+  {
+    $("#modal_edit_kamar").modal('toggle');
+    $.ajax({
+     url: "proses/edit_kamar.php",
+     method: "GET",
+     data:{
+		   idp:id
+	      },
+     success: function(data)
+      {
+        $("#tedit_kamar").html(data).refresh;
+      }
+    });
+  }
+
 $(function(){	
     $("#add_kamar").on('click', function(){
      var nama    = $("#nama_kamar").val();
      var jkamar  = $("#jml_kamar").val();
-     document.getElementById("form_k").reset();
 
 	 if ( (nama=="") || (jkamar==""))
 	 {
@@ -170,13 +211,53 @@ $(function(){
       {
         if (data=="OK") 
          {
-          alert("Data Tersimpan!")
+          alert("Data Tersimpan!");
           window.location.href="index.php?id=kamar";
 		     } 
           if (data=="ERROR") 
            {
-            alert("Data TIDAK tersimpan!")
+            alert("Data TIDAK tersimpan!");
 	         }
+           document.getElementById("form_k").reset();
+	     } 
+
+      });  
+    });
+	
+});
+
+$(function(){	
+    $("#update_kamar").on('click', function(){
+     var idk      = $("#idk").val();
+     var enama    = $("#enama_kamar").val();
+     var ejkamar  = $("#ejml_kamar").val();
+
+	 if ( (enama=="") || (ejkamar==""))
+	 {
+        alert("Terjadi kesalahan. Ada data yang kosong!");
+        return;
+	 }
+	 
+     $.ajax({
+     url: "proses/update_kamar.php",
+     method: "POST",
+     data:{
+           idk    : idk,
+		       nama   : enama, 
+           jkamar : ejkamar
+	      },
+     success: function(data)
+      {
+        if (data=="OK") 
+         {
+          alert("Data Terupdate!");
+          window.location.href="index.php?id=kamar";
+		     } 
+          if (data=="ERROR") 
+           {
+            alert("Data TIDAK terupdate!");
+	         }
+           document.getElementById("form_ke").reset();
 	     } 
 
       });  
