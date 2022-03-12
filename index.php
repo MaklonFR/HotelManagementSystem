@@ -62,7 +62,7 @@
      <!-- Mulai Script Panggil SlideShow Dari Tabel Fasilitas Umum menggunakan PHP -->
         <?php
             $aktif="active";
-            $sql = "SELECT * FROM tb_fasilitas_umum ORDER BY id DESC LIMIT 3";
+            $sql = "SELECT * FROM tb_fasilitas_umum ORDER BY id DESC LIMIT 5";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
               //membaca data pada baris tabel
@@ -189,20 +189,31 @@
 <div class="container mt-2" id="panel_fasilitas_kami">
     <h2 class="text-center" >FASILITAS KAMI</h2>
       <h5 class="text-center">Hotel Anaya</h5>
+        
+      <!-- Mulai Script Panggil SlideShow Dari Tabel Fasilitas Umum menggunakan PHP -->
+        <?php
+            $aktif="active";
+            $sql = "SELECT * FROM tb_fasilitas_umum ORDER BY id DESC LIMIT 5";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+              //membaca data pada baris tabel
+              while($row = $result->fetch_assoc()) {
+                $nf= $row["nama_fasilitas"];
+                $gambar= $row["gambar"];
+                $ket = $row["keterangan"];
+        ?>
+
       <div class="container mt-4">
       <div class="card">
-        <h5>Kolam Renang</h5>
-        <p>The .img-fluid class makes the image scale nicely to the parent element (resize the browser window to see the effect):</p>
-        <img class="img-fluid" max-width: 100%;  height: auto; src="image/satu.jpg" alt="Gambar"> 
+        <h5><?php echo $nf ; ?></h5>
+        <p><?php echo $ket ; ?></p>
+        <img class="img-fluid" max-width: 100%;  height: auto; src="<?php echo $gambar ; ?>" alt="Gambar"> 
       </div>
       </div>
-      <div class="container mt-4">
-      <div class="card">
-        <h4>Kantin Umum</h4>
-        <p>The .img-fluid class makes the image scale nicely to the parent element (resize the browser window to see the effect):</p>
-        <img class="img-fluid" max-width: 100%;  height: auto; src="image/dua.jpg" alt="Gambar"> 
-      </div>
-      </div>
+    <?php
+        }
+      } 
+    ?>
 </div>
 
 <!-- SCRIPT KAMAR -->
@@ -211,36 +222,40 @@
     <h5 class="text-center">Hotel Anaya</h5>
 
   <div class="justify-content-center">
+   <!-- Mulai Script Panggil SlideShow Dari Tabel Fasilitas Umum menggunakan PHP -->
+   <?php
+     $sql = "SELECT * FROM tb_fasilitas_kamar ORDER BY id DESC LIMIT 5";
+      $result = $conn->query($sql);
+       if ($result->num_rows > 0) {
+       //membaca data pada baris tabel
+        while($row = $result->fetch_assoc()) {
+         $idk= $row["id_kamar"];
+         $gambar= $row["gambar"];
+         $fas = $row["fasilitas"];
+
+         $sql2    = "SELECT nama_kamar FROM tb_kamar WHERE id_kamar= '$idk'";
+         $result2 = $conn->query($sql2);
+         $row2    = $result2->fetch_assoc();
+   ?>
+
   <div class="card mt-2 mb-4">
       <div class="">
-        <h5 class="card-title">Tipe Superior:</h5>
-        <ul>
-          <li>Kamar berukuran luas 32 m2</li>
-          <li>Kamar mandi Shower</li>
-          <li>AC</li>
-          <li>LED</li>
+        <h5 class="card-title"><?php echo $row2["nama_kamar"]; ?> :</h5>
+        <ul> 
+          <li><?php echo $fas; ?></li>
         </ul>
-        <img class="img-fluid" src="image/tiga.jpg" alt="Card image">
+        <img class="img-fluid" src="<?php echo $gambar; ?>" alt="Card image">
       </div>
     </div>
-    <div class="card mt-2 mb-4">
-      <div class="">
-        <h5 class="card-title">Tipe Delux:</h5>
-        <ul>
-          <li>Kamar berukuran luas 32 m2</li>
-          <li>Kamar mandi Shower</li>
-          <li>AC</li>
-          <li>LED</li>
-        </ul>     
-      <img class="img-fluid" src="image/dua.jpg" alt="Card image">
-      </div>
-    </div>
-    
+   <?php
+        }
+      }
+    ?>   
   </div>
 </div>
 
 <!-- SCRIPT TEANTANG KAMI -->
-<div class="container mt-2" id="panel_tentang_kami">
+<div class="container  mt-2" id="panel_tentang_kami">
   <div class="d-flex justify-content-center">
     <div class="row">
      <div class="col-sm-12 p-5">

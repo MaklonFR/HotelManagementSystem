@@ -2,7 +2,7 @@
  //print_r($_POST);
  include "../../includes/koneksi.php"; 
  $nama      = $_POST['nama'];
- $ket    = $_POST['ket'];
+ $ket    	= $_POST['ket'];
 
   $sql = "INSERT INTO tb_fasilitas_umum (nama_fasilitas, keterangan) 
 			        VALUES ('$nama','$ket')";					
