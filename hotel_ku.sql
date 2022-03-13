@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Mar 2022 pada 06.22
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 7.4.27
+-- Generation Time: Mar 13, 2022 at 04:36 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_fasilitas_kamar`
+-- Table structure for table `tb_fasilitas_kamar`
 --
 
 CREATE TABLE `tb_fasilitas_kamar` (
@@ -35,22 +35,19 @@ CREATE TABLE `tb_fasilitas_kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_fasilitas_kamar`
+-- Dumping data for table `tb_fasilitas_kamar`
 --
 
 INSERT INTO `tb_fasilitas_kamar` (`id`, `id_kamar`, `fasilitas`, `gambar`) VALUES
-(1, 1, 'TV LCD 32 Inch', 'image/TVLCD32Inch20220305033325am.jpg'),
-(2, 1, 'Air Mineral 2 botol', 'image/AirMineral2botol20220305033336am.jpg'),
-(3, 1, 'AC full Politron', 'image/ACfullPolitron20220305033349am.jpg'),
-(4, 2, 'TV LCD 32 Inch HD Resolution', 'image/TVLCD32InchHDResolution20220305033059am.jpg'),
-(5, 2, 'AC Full Sharp', 'image/ACFullSharp20220305032903am.jpg'),
-(6, 1, 'Air Mineral 2 Botol 1', 'image/AirMineral2Botol120220305032839am.jpg'),
-(20, 1, 'Piano Mini', 'image/PianoMini20220305032536am.jpg');
+(23, 6, 'TV 42 Inc', 'image/TV42Inc20220313110820pm.jpg'),
+(24, 6, 'AC Pendingin Ruang', 'image/ACPendinginRuang20220313110855pm.jpg'),
+(25, 5, 'Wi-Fi Internet gratis', 'image/WiFiInternetgratis20220313110953pm.jpg'),
+(26, 5, 'Kamar mandi mandi', 'image/Kamarmandimandi20220313111017pm.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_fasilitas_umum`
+-- Table structure for table `tb_fasilitas_umum`
 --
 
 CREATE TABLE `tb_fasilitas_umum` (
@@ -61,18 +58,18 @@ CREATE TABLE `tb_fasilitas_umum` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_fasilitas_umum`
+-- Dumping data for table `tb_fasilitas_umum`
 --
 
 INSERT INTO `tb_fasilitas_umum` (`id`, `nama_fasilitas`, `keterangan`, `gambar`) VALUES
-(1, 'Kolam Renang', 'Berada pada samping Lantai 1 dengan luas 6m persegi', 'image/ACfullPolitron20220305033349am.jpg'),
-(2, 'Lapangan Badminton', 'Berada pada lantai 5 dengan luas 50m persegi', 'image/ACFullSharp20220305032903am.jpg'),
-(3, 'Tempat Santai', 'Berada pada Lantai 12 menghadap Sunrise', 'image/TVLCD32Inch20220305033325am.jpg');
+(2, 'Kolam Renang Anak', 'Berada pada lantai 5 dengan luas 500m persegi', 'image/LapanganBadminton20220313101526pm.jpeg'),
+(3, 'Tempat Santai', 'Berada pada Lantai 12 menghadap Sunrise', 'image/TempatSantai20220313101501pm.jpg'),
+(9, 'Kolam Renang 3', 'Ganti air setiap kali dipakai', 'image/KolamRenang320220313101049pm.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_kamar`
+-- Table structure for table `tb_kamar`
 --
 
 CREATE TABLE `tb_kamar` (
@@ -82,14 +79,10 @@ CREATE TABLE `tb_kamar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_kamar`
+-- Dumping data for table `tb_kamar`
 --
 
 INSERT INTO `tb_kamar` (`id_kamar`, `nama_kamar`, `total_kamar`) VALUES
-(1, 'Superior', 25),
-(2, 'Deluxe', 15),
-(3, 'Premium', 2),
-(4, 'Economy', 20),
 (5, 'Blazzer', 10),
 (6, 'Gold', 5),
 (7, 'Diskon', 5),
@@ -112,12 +105,13 @@ INSERT INTO `tb_kamar` (`id_kamar`, `nama_kamar`, `total_kamar`) VALUES
 (24, 'Light new', 12),
 (25, 'Black Thown', 13),
 (26, 'Broen Like', 3),
-(27, 'White dog blur', 7);
+(27, 'White dog blur', 9),
+(28, 'Premium', 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_pelanggan`
+-- Table structure for table `tb_pelanggan`
 --
 
 CREATE TABLE `tb_pelanggan` (
@@ -135,7 +129,7 @@ CREATE TABLE `tb_pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_pelanggan`
+-- Dumping data for table `tb_pelanggan`
 --
 
 INSERT INTO `tb_pelanggan` (`id`, `nama_pemesan`, `email`, `hp`, `nama_tamu`, `tgl_pesan`, `checkin`, `checkout`, `jml_kamar`, `status`, `id_kamar`) VALUES
@@ -154,7 +148,7 @@ INSERT INTO `tb_pelanggan` (`id`, `nama_pemesan`, `email`, `hp`, `nama_tamu`, `t
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -165,7 +159,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `tipe`) VALUES
@@ -177,65 +171,65 @@ INSERT INTO `tb_user` (`id`, `username`, `password`, `tipe`) VALUES
 --
 
 --
--- Indeks untuk tabel `tb_fasilitas_kamar`
+-- Indexes for table `tb_fasilitas_kamar`
 --
 ALTER TABLE `tb_fasilitas_kamar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_fasilitas_umum`
+-- Indexes for table `tb_fasilitas_umum`
 --
 ALTER TABLE `tb_fasilitas_umum`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_kamar`
+-- Indexes for table `tb_kamar`
 --
 ALTER TABLE `tb_kamar`
   ADD PRIMARY KEY (`id_kamar`);
 
 --
--- Indeks untuk tabel `tb_pelanggan`
+-- Indexes for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_fasilitas_kamar`
+-- AUTO_INCREMENT for table `tb_fasilitas_kamar`
 --
 ALTER TABLE `tb_fasilitas_kamar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_fasilitas_umum`
+-- AUTO_INCREMENT for table `tb_fasilitas_umum`
 --
 ALTER TABLE `tb_fasilitas_umum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_kamar`
+-- AUTO_INCREMENT for table `tb_kamar`
 --
 ALTER TABLE `tb_kamar`
-  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_pelanggan`
+-- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
