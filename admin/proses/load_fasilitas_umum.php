@@ -44,8 +44,10 @@
             <tr>
                 <td><?php echo $row["nama_fasilitas"]; ?></td>
                 <td class="text-center"><?php echo $row["keterangan"]; ?></td>
-                <td class="text-center"><a href="#" data-id="" class="btn btn-success" onClick="show_modal_fasilitas_umum(this.id)" id="<?php echo $row["id"]; ?>">Lihat</a> 
-                    <a href="#" data-id="" class="btn btn-primary" onClick="check_modal_fasilitas_umum(this.id)" id="<?php echo $row["id"]; ?>">Edit</a>
+                <td class="text-center">
+                  <a href="#" data-id="" class="btn btn-success" onClick="show_modal_fasilitas_umum(this.id,1)" id="<?php echo $row["id"]; ?>">Lihat</a> 
+                  <a href="#" data-id="" class="btn btn-primary" onClick="show_modal_fasilitas_umum(this.id,0)" id="<?php echo $row["id"]; ?>">Edit</a>
+                  <a href="#" data-id="" class="btn btn-danger" onClick="delete_fasilitas_umum(this.id)" id="<?php echo $row["id"]; ?>">Delete</a>
                 </td>
             </tr>
             <?php
@@ -69,7 +71,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Data Fasilitas Umum</h4>
+        <h4 class="modal-title">Data Fasilitas Umum - TAMBAH</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -110,7 +112,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Deskripsi Fasilitas Umum</h4>
+        <h4 class="modal-title">Fasilitas Umum</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -131,14 +133,14 @@
     $("#modal_tambah_fasilitas_umum").modal('toggle');
   }
 
-  function show_modal_fasilitas_umum(id)
+  function show_modal_fasilitas_umum(id,cek)
   {
     $("#lihat_data_fasilitas_umum").modal('toggle');
     $.ajax({
      url: "proses/tampil_fasilitas_umum.php",
      method: "GET",
      data:{
-		   idp:id
+		   idp:id, cek:cek
 	      },
      success: function(data)
       {
@@ -146,7 +148,31 @@
       }
     });
   }
+/*BAGIAN DELETE */
+function delete_fasilitas_umum(id)
+  {
+    $.ajax({
+     url: "proses/delete_fasilitas_umum.php",
+     method: "POST",
+     data:{
+		        idp:id
+	        },
+        success: function(data)
+        {
+        if (data=="OK") 
+         {
+          alert("Data Berhasil dihapus!");
+          window.location.href="index.php?id=fasilitas_umum";
+		     } 
+          if (data=="ERROR") 
+           {
+            alert("Data Gagal dihapus!");
+	         }
+        }
+    });
+  }
 
+  /*BAGIAN ADD */
 $(function(){	
    $("#add_fasilitas_umum").on('click', function(){
      var namafu       = $("#nama_fasilitas_umum").val();

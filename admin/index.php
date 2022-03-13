@@ -54,6 +54,17 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+ if (window.location.href.indexOf('index.php?id=fasilitas_kamar') > -1) {
+   load_fasilitas_kamar();
+ } else
+ if (window.location.href.indexOf('index.php?id=fasilitas_umum') > -1) {
+   load_fasilitas_umum();
+ } else
+ if ( (window.location.href.indexOf('index.php?id=kamar') > -1) ||
+     (window.location.href.indexOf('/') > -1) ) {
+ load_kamar();
+ }
+
   /*tombol tambah(+) fasilitas*/
     $("#add_fasilitas").click(function() {
     $("#modal_tambah_fasilitas").modal('show');
@@ -91,16 +102,6 @@ $(document).ready(function(){
    $("#lihat_data_fasilitas_umum").modal("show");
    });
 
-load_kamar();
-if (window.location.href.indexOf('index.php?id=kamar') > -1) {
-load_kamar();
-} else 
- if (window.location.href.indexOf('index.php?id=fasilitas_kamar') > -1) {
-   load_fasilitas_kamar();
- } else
- if (window.location.href.indexOf('index.php?id=fasilitas_umum') > -1) {
-   load_fasilitas_umum();
- }
 
 function load_kamar() 
 {

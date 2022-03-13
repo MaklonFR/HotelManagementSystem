@@ -107,7 +107,7 @@ $(function(){
      processData: false,
      success: function(data)
       {
-        alert(data);return;
+        //alert(data);return;
         if (data=="OK") 
          {           
           document.getElementById("edit_form_fu").reset();

@@ -35,7 +35,7 @@
           </thead>
           <tbody>
             <?php
-              $sql="SELECT * FROM tb_kamar ORDER BY id_kamar DESC LIMIT 5";
+              $sql="SELECT * FROM tb_kamar ORDER BY id_kamar ASC LIMIT 10";
               $result= $conn->query($sql);
               if ($result->num_rows > 0 ) {
                 while ($row = $result->fetch_assoc())
@@ -45,8 +45,10 @@
             <tr>
                 <td><?php echo $row["nama_kamar"]; ?></td>
                 <td class="text-center"><?php echo $row["total_kamar"]; ?></td>
-                <td class="text-center"><a href="#" data-id="" class="btn btn-success" onClick="show_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Lihat</a> 
-                    <a href="#" data-id="" class="btn btn-primary" onClick="edit_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Edit</a>
+                <td class="text-center">
+                  <a href="#" data-id="" class="btn btn-success" onClick="show_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Lihat</a> 
+                  <a href="#" data-id="" class="btn btn-primary" onClick="edit_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Edit</a>
+                  <a href="#" data-id="" class="btn btn-danger"  onClick="delete_modal_kamar(this.id)" id="<?php echo $row["id_kamar"]; ?>">Delete</a>
                 </td>
             </tr>
             <?php
@@ -186,6 +188,29 @@
       {
         $("#tedit_kamar").html(data).refresh;
       }
+    });
+  }
+
+  function delete_modal_kamar(id)
+  {
+    $.ajax({
+     url: "proses/delete_kamar.php",
+     method: "POST",
+     data:{
+		        idp:id
+	        },
+        success: function(data)
+        {
+        if (data=="OK") 
+         {
+          alert("Data Berhasil dihapus!");
+          window.location.href="index.php?id=kamar";
+		     } 
+          if (data=="ERROR") 
+           {
+            alert("Data Gagal dihapus!");
+	         }
+        }
     });
   }
 

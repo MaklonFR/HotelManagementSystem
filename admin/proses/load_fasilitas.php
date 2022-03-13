@@ -44,8 +44,10 @@
             <tr>
                 <td><?php echo $row["nama_kamar"]; ?></td>
                 <td class="text-center"><?php echo $row["fasilitas"]; ?></td>
-                <td class="text-center"><a href="#" data-id="" class="btn btn-success" onClick="show_modal_fasilitas_kamar(this.id, 1)" id="<?php echo $row["id"]; ?>">Lihat</a> 
-                    <a href="#" data-id="" class="btn btn-primary" onClick="show_modal_fasilitas_kamar(this.id, 0)" id="<?php echo $row["id"]; ?>">Edit</a>
+                <td class="text-center">
+                  <a href="#" data-id="" class="btn btn-success" onClick="show_modal_fasilitas_kamar(this.id, 1)" id="<?php echo $row["id"]; ?>">Lihat</a> 
+                  <a href="#" data-id="" class="btn btn-primary" onClick="show_modal_fasilitas_kamar(this.id, 0)" id="<?php echo $row["id"]; ?>">Edit</a>
+                  <a href="#" data-id="" class="btn btn-danger" onClick="delete_fasilitas_kamar(this.id)" id="<?php echo $row["id"]; ?>">Delete</a>
                 </td>
             </tr>
             <?php
@@ -126,7 +128,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Deskripsi Fasilitas</h4>
+        <h4 class="modal-title">Fasilitas Kamar</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -163,6 +165,31 @@
       }
     });
   }
+
+  /*BAGIAN DELETE */
+  function delete_fasilitas_kamar(id)
+  {
+    $.ajax({
+     url: "proses/delete_fasilitas_kamar.php",
+     method: "POST",
+     data:{
+		        idp:id
+	        },
+        success: function(data)
+        {
+        if (data=="OK") 
+         {
+          alert("Data Berhasil dihapus!");
+          window.location.href="index.php?id=fasilitas_kamar";
+		     } 
+          if (data=="ERROR") 
+           {
+            alert("Data Gagal dihapus!");
+	         }
+        }
+    });
+  }
+
 
 /*BAGIAN ADD*/
 $(function(){	
