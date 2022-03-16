@@ -10,7 +10,7 @@
 <!-- Desain Pencarian Tanggal dan Nama -->
 <div class="d-flex justify-content-between d-flex flex-row-reverse">
     <div class="form-floating mb-2 mt-3">
-      <input type="text" class="form-control" id="nama"  name="nama">
+      <input type="text" class="form-control" id="carikamar"  name="carikamar">
       <label for="nama">Cari Nama Kamar</label>
      </div> 
      <div class="form-floating mb-2 mt-3">
@@ -24,7 +24,7 @@
      <div class="card-body">
       
       
-       <div id="cari_nama" style="overflow-x:auto;">
+       <div id="cari_kamar" style="overflow-x:auto;">
          <table id="tb_kamar" class="table table-striped" style="width:100%">
           <thead>
             <tr>
@@ -153,7 +153,7 @@
 </div>
 <!------------------------------ Script Akhir Modal EDIT Kamar ------------------------------ -->
 
-<script>
+<script type="text/javascript">
  function add_modal_kamar()
   {
     $("#modal_tambah_kamar").modal('toggle');
@@ -289,7 +289,22 @@ $(function(){
     });
 	
 });
-  
+    
+$('#carikamar').keyup(function(){
+      var kata = $("#carikamar").val();
+            //alert(kata);
+            $.ajax({
+            url: "proses/cari_kamar.php",
+            method: "POST",
+            data:{kata:kata},
+              success: function(data)
+              {
+                //alert(data);return;
+                $("#cari_kamar").html(data).refresh;
+              }
+            });
+    });
+ 
 </script>
 
 
