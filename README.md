@@ -13,39 +13,36 @@ Langkah - Langkah
 7. Link Admin: localhost/hotel/admin/
 8. Selamat mencoba! 
 
-TAMPILAN PELANGGAN
+**TAMPILAN MOCKUP**
 
-![image](https://user-images.githubusercontent.com/88584119/153408853-c9fe184e-26ed-44c0-a0ae-692c1a20f2bd.png)
+**HALAMAN HOME**
 
+![HALAMAN HOME](https://user-images.githubusercontent.com/88584119/160518760-b4ac1820-3d33-4af2-ac90-eeccb10fa995.jpg)
 
-TAMPILAN RESEPSIONIS
-- HOME
+**HALAMAN FASILITAS KAMAR**
 
-![image](https://user-images.githubusercontent.com/88584119/153409047-8c8713fa-4100-4ff7-892e-5cb544df7488.png)
+![HALAMAN FK](https://user-images.githubusercontent.com/88584119/160518806-1c380a98-a46a-4388-b596-d1ae875c6305.jpg)
 
+**HALAMAN FASILITAS UMUM**
 
-- LIHAT DATA
+![FU](https://user-images.githubusercontent.com/88584119/160518850-b4e91032-e856-4c9d-bf22-42c73b73b010.jpg)
 
+**HALAMAN RESEPSIONIS**
 
-![image](https://user-images.githubusercontent.com/88584119/153409236-d75574a7-a571-4dc7-bee7-06599f161cbb.png)
+![RESEPSIONIS](https://user-images.githubusercontent.com/88584119/160518885-a98cbcce-08e8-4c58-8339-0e136cdb7fc8.jpg)
 
+**HALAMAN ADMIN-KAMAR**
 
-- PROSES RESERVASI
+![ADMIN-KAMAR](https://user-images.githubusercontent.com/88584119/160518931-4ccbb4eb-780d-4f32-8693-c7e666e758bd.jpg)
 
+**HALAMAN ADMIN-FASILITAS KAMAR**
 
-![image](https://user-images.githubusercontent.com/88584119/153409384-31f13f61-ea31-4b2a-b19a-1321452b6e6c.png)
+![ADMIN-FK](https://user-images.githubusercontent.com/88584119/160519004-d08b6094-8ca3-4370-9eb4-861aca3db9e9.jpg)
 
-TAMPILAN ADMIN
-- DATA KAMAR
+HALAMAN ADMIN-FASILITAS UMUM
 
+![ADMIN-FU](https://user-images.githubusercontent.com/88584119/160519045-37c1d3dd-aa91-44ba-8bde-746eda225c4f.jpg)
 
-![image](https://user-images.githubusercontent.com/88584119/153409562-9d6a3e46-c39f-4119-b692-eccae64fca93.png)
-
-
-- DATA FASILITAS KAMAR
-
-
-![image](https://user-images.githubusercontent.com/88584119/153409662-5586d02e-f9f2-4687-96f5-90030202423f.png)
 
 
 Link Demo : https://ukk-rpl-2022.smkn1kuwus.sch.id/
