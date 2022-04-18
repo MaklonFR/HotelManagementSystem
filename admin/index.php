@@ -1,7 +1,17 @@
+<?php
+      if (!isset($_SESSION)) 
+        {
+        session_start();       
+        }
+  	   if(isset($_SESSION['admin'])){
+    	  header('location: home.php');
+  	  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Admin - Hotel Booking</title>
+  <title>RESPSIONIS - HOTEL BOOKING</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="../hotel.png" />
@@ -14,22 +24,16 @@
      <p>Selamat datang di Hotel Anaya Labuan Bajo Indonesia!</p> 
 </div>
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
       <div class="container-fluid">
-          <h4><a class="nav-link text-white">ADMIN</a></h4> 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+          <a class="navbar-brand" href="#">ADMIN</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
            <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="mynavbar">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-             <h5><a class="nav-link" href="#" id="tombol_kamar">Kamar</a></h5> 
-            </li>
-            <li class="nav-item">
-              <h5><a class="nav-link" href="#" id="tombol_fasilitas">Fasilitas Kamar</a></h5> 
-            </li>
-            <li class="nav-item">
-              <h5><a class="nav-link" href="#" id="tombol_fasilitas_umum">Fasilitas Umum</a></h5>
+             <h5><a class="nav-link" href="">Home</a></h5> 
             </li>
           </ul>     
   
@@ -37,14 +41,34 @@
       </div>
 </nav>
 
-<!-------- PANGGIL DATA KAMAR, FASILITAS DAN FASILITAS UMUM ------>
-<div id="data"> 
-   
+<div class="container mt-4 col-sm-4">
+ <h2 class="text-center" >LOGIN</h2>
+ <h6 class="text-center">Silahkan masukan username dan password anda!</h6>
+ 
+   <div class="row" id="dlogin"> 
+    <form action="" id="flogin">
+      <div class="input-group flex-nowrap mt-2 mb-2">
+        <span class="input-group-text" id="addon-wrapping">U</span>
+        <input type="text" class="form-control" 
+               placeholder="Username" id="username" aria-label="Username" 
+               aria-describedby="addon-wrapping">
+      </div>
+      <div class="input-group flex-nowrap mt-2 mb-2">
+        <span class="input-group-text" id="addon-wrapping">P</span>
+        <input type="password" id="password" class="form-control" 
+               placeholder="Password" aria-label="Password" 
+               aria-describedby="addon-wrapping">
+      </div>
+      <button type="button" id="proses_login" class="btn btn-primary">Login</button>
+      <button type="button" class="btn btn-light">Cancel</button>
+    </form>
+  </div>
+
 </div>
 
 <!-- SCRIPT FOOTER -->
-<div class="mt-5 p-2 bg-dark text-white text-center">
-  <p>@Desain by UKK RPL 2022</p>
+<div class="mt-5 p-2 bg-secondary text-white text-center">
+  <p>@Desain by Software Engineering SMKN 1 Kuwus</p>
 </div>
 
 <!-- SCRIPT JAVASCRIPT -->
@@ -52,103 +76,38 @@
 <script src="../js/bootstrap5.0.1.bundle.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-
- if (window.location.href.indexOf('index.php?id=fasilitas_kamar') > -1) {
-   load_fasilitas_kamar();
- } else
- if (window.location.href.indexOf('index.php?id=fasilitas_umum') > -1) {
-   load_fasilitas_umum();
- } else
- if ( (window.location.href.indexOf('index.php?id=kamar') > -1) ||
-     (window.location.href.indexOf('/') > -1) ) {
- load_kamar();
- }
-
-  /*tombol tambah(+) fasilitas*/
-    $("#add_fasilitas").click(function() {
-    $("#modal_tambah_fasilitas").modal('show');
+ $(document).ready(function(){
+ 
+  $("#proses_login").click(function(){
+    var user    = $("#username").val();
+    var pass    = $("#password").val();
+    if ( (user=="") || (pass=="") )
+    {
+      alert("Field belum diisi!"); return;
+    }
+     $.ajax({
+     url: "login_admin.php",
+     method: "POST",
+     data:{username:user, password:pass},
+          success: function(data)
+          {
+           //alert(data); return;
+           if (data=="OK") 
+            {
+              alert("Login Successfuly!");
+              window.location.href="home.php";
+		        } 
+           if (data=="ERROR") 
+            {
+              document.getElementById("flogin").reset();
+              alert("Terjadi kesalahan! Error Username dan Password");
+	          }
+          }
+        });
   });
-
-  /*tombol tambah(+) fasilitas umum*/
-    $("#add_fasilitas_umum").click(function() {
-    $("#modal_tambah_fasilitas_umum").modal('show');
-  });
-  
-  /*Saat klik tombol Menu Kamar*/
-    $("#tombol_kamar").click(function() {
-    load_kamar();
-  });
-
-  /*Saat klik tombol Menu Fasilitas kamar*/
-  $("#tombol_fasilitas").click(function() {
-    load_fasilitas_kamar();
-  });
-
-  /*Saat klik tombol Menu Fasilitas Umum*/
-  $("#tombol_fasilitas_umum").click(function() {
-    load_fasilitas_umum();
-  });
-    
-   $("#show_kamar").click(function() {
-   $("#lihat_data_kamar").modal("show");
-   });
-
-   $("#show_fasilitas").click(function() {
-   $("#lihat_data_fasilitas").modal("show");
-   });
-
-   $("#show_fasilitas_umum").click(function() {
-   $("#lihat_data_fasilitas_umum").modal("show");
-   });
-
-
-function load_kamar() 
-{
- var id=0;
- $.ajax({
-    url: "proses/load_kamar.php",
-    method: "POST",
-    data:{ids:id},
-         success: function(data)
-         {
-           //alert(data);return;
-           $("#data").html(data).refresh;
-         }
-       });
- }
-
-function load_fasilitas_kamar() 
-{
- var id=0;
- $.ajax({
-    url: "proses/load_fasilitas.php",
-    method: "POST",
-    data:{ids:id},
-         success: function(data)
-         {
-           //alert(data);return;
-           $("#data").html(data).refresh;
-         }
-       });
- }
-
-function load_fasilitas_umum() 
-{
- var id=0;
- $.ajax({
-    url: "proses/load_fasilitas_umum.php",
-    method: "POST",
-    data:{ids:id},
-         success: function(data)
-         {
-           //alert(data);return;
-           $("#data").html(data).refresh;
-         }
-       });
- }
 
 });
+
 </script>
 
 <!-- END BODY -->

@@ -97,7 +97,7 @@ $(function(){
          {
           alert("Data Tersimpan!");
           document.getElementById("form_efu").reset();
-          window.location.href="index.php?id=fasilitas_umum";
+          window.location.href="home.php?id=fasilitas_umum";
 		     } 
           if (data=="ERROR") 
            {

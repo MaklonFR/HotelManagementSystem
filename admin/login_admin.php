@@ -1,7 +1,7 @@
 <?php
 //print_r($_POST);
 
-include '../../includes/koneksi.php';
+include '../includes/koneksi.php';
 if (!isset($_SESSION)) {
     session_start();	
 }
@@ -10,7 +10,7 @@ if(isset($_POST['username'])!==null)
  {
     $user 		    = $_POST['username'];
 	$password 	    = $_POST['password'];
-    $tipe           = "resepsionis";
+    $tipe           = "admin";
     
     $sql   = "SELECT * FROM tb_user WHERE (( username = '$user') AND (password='$password')AND (tipe='$tipe'))";
     $query = $conn->query($sql);

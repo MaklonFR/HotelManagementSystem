@@ -25,7 +25,7 @@
       
       
        <div id="cari_kamar" style="overflow-x:auto;">
-         <table id="tb_kamar" class="table table-striped" style="width:100%">
+         <table id="tb_kamar" class="table table-responsive" >
           <thead>
             <tr>
                 <th>Nama Kamar</th>
@@ -237,7 +237,7 @@ $(function(){
         if (data=="OK") 
          {
           alert("Data Tersimpan!");
-          window.location.href="index.php?id=kamar";
+          window.location.href="home.php?id=kamar";
 		     } 
           if (data=="ERROR") 
            {

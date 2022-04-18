@@ -112,7 +112,7 @@ $(function(){
          {           
           document.getElementById("edit_form_fu").reset();
           alert("Data Terupdate!")
-          window.location.href="index.php?id=fasilitas_kamar";
+          window.location.href="home.php?id=fasilitas_kamar";
 		     } 
           if (data=="ERROR") 
            {
