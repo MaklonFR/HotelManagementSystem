@@ -48,7 +48,7 @@
    <div class="row" id="dlogin"> 
     <form action="" id="flogin">
       <div class="input-group flex-nowrap mt-2 mb-2">
-        <span class="input-group-text" id="addon-wrapping">@</span>
+        <span class="input-group-text" id="addon-wrapping">U</span>
         <input type="text" class="form-control" 
                placeholder="Username" id="username" aria-label="Username" 
                aria-describedby="addon-wrapping">
@@ -81,14 +81,14 @@
   $("#proses_login").click(function(){
     var user    = $("#username").val();
     var pass    = $("#password").val();
-    if ( (username=="") || (password=="") )
+    if ( (user=="") || (pass=="") )
     {
       alert("Field belum diisi!"); return;
     }
      $.ajax({
      url: "proses/login_resepsionis.php",
      method: "POST",
-     data:{username:username, password:password},
+     data:{username:user, password:pass},
           success: function(data)
           {
            if (data=="OK") 

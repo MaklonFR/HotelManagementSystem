@@ -1,5 +1,5 @@
 <?php
-//print_r($_POST);
+print_r($_POST);
 
 include '../../includes/koneksi.php';
 if (!isset($_SESSION)) {
