@@ -1,5 +1,5 @@
 <?php
-	include '../includes/session.php';
+	include '../includes/session_resepsionis.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-             <h5><a class="nav-link" href="">Home</a></h5> 
+             <h5><a class="nav-link" href="logout.php">Logout</a></h5> 
             </li>
           </ul>     
   

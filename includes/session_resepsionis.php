@@ -5,10 +5,10 @@
 	}
 
 	if(!isset($_SESSION['admin']) || trim($_SESSION['admin']) == ''){
-		header('location: ../resepsionis/home.php?#');
+		header('location: ../resepsionis/index.php');
 	}
 
-	$sql = "SELECT * FROM user WHERE username = '".$_SESSION['admin']."'";
+	$sql = "SELECT * FROM tb_user WHERE username = '".$_SESSION['admin']."'";
 	$query = $conn->query($sql);
 	$user = $query->fetch_assoc();
 	

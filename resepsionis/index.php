@@ -55,7 +55,7 @@
       </div>
       <div class="input-group flex-nowrap mt-2 mb-2">
         <span class="input-group-text" id="addon-wrapping">P</span>
-        <input type="text" id="password" class="form-control" 
+        <input type="password" id="password" class="form-control" 
                placeholder="Password" aria-label="Password" 
                aria-describedby="addon-wrapping">
       </div>
@@ -91,16 +91,17 @@
      data:{username:user, password:pass},
           success: function(data)
           {
+           //alert(data); return;
            if (data=="OK") 
             {
               alert("Login Successfuly!");
               window.location.href="home.php";
 		        } 
-             if (data=="ERROR") 
-              {
-                document.getElementById("flogin").reset();
-                alert("Terjadi kesalahan! Error Username dan Password");
-	            }
+           if (data=="ERROR") 
+            {
+              document.getElementById("flogin").reset();
+              alert("Terjadi kesalahan! Error Username dan Password");
+	          }
           }
         });
   });
