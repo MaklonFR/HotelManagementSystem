@@ -35,83 +35,35 @@
       </div>
 </nav>
 
-<!--------------------------------------------- SCRIPT AWAL DATA RESERVASI ----------------------------------------------------------- -->
-<div class="container mt-2" id="data_reservasi">
- <h2 class="text-center" >DATA RESERVASI</h2>
- <h5 class="text-center">Hotel Anaya</h5>
+<div class="container mt-4 col-sm-4">
+ <h2 class="text-center" >LOGIN</h2>
+ <h6 class="text-center">Silahkan masukan username dan password anda!</h6>
  
-   <div id="data_table"> 
-   
-   </div>
- 
-
-
-</div>
-<!--------------------------------------------- SCRIPT AKHIR DATA  RESERVASI ----------------------------------------------------------- -->
-
-<!------------------------------ Script Awal Modal Lihat Reservasi------------------------------ -->
-<div class="modal fade" id="modal_lihat_reservasi">
-  <div class="modal-dialog">
-    <div class="modal-content">
-       <input type="text" id="idpelanggan" value="3" hidden>   
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title text-center">Data Tamu</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+   <div class="row" id="login"> 
+    <form action="" id="flogin">
+      <div class="input-group flex-nowrap mt-2 mb-2">
+        <span class="input-group-text" id="addon-wrapping">@</span>
+        <input type="text" class="form-control" 
+               placeholder="Username" aria-label="Username" 
+               aria-describedby="addon-wrapping">
       </div>
-
-      <!-- Modal body -->
-      <div id="pelanngan" class="modal-body">
-      
+      <div class="input-group flex-nowrap mt-2 mb-2">
+        <span class="input-group-text" id="addon-wrapping">@</span>
+        <input type="text" class="form-control" 
+               placeholder="Password" aria-label="Password" 
+               aria-describedby="addon-wrapping">
       </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <p class="text-center">@Desain by UKK RPL 2022</p>
-      </div>
-
-    </div>
+      <button type="button" class="btn btn-primary">Login</button>
+      <button type="button" class="btn btn-light">Cancel</button>
+    </form>
   </div>
+
 </div>
-<!------------------------------ Script Akhir Modal Lihat Reservasi ------------------------------ -->
 
-<!----------------------------- Script Awal Modal Check Reservasi -------------------------------- -->
-<div class="modal fade" id="modal_check_reservasi">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Reservasi</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class="form-floating mt-2 mb-2">
-         <select class="form-select mt-3" id="proses" name="proses">
-           <option value="1"> Selesai Checkin </option> 
-           <option value="0"> Dalam Proses </option> 
-           <option value="3"> Batal </option>   
-          </select>
-           <label for="idkamar">Proses</label>
-         </div>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="id_proses" >Proses</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!----------------------------- Script Akhir Modal Check Reservasi -------------------------------- -->
 
 <!-- SCRIPT FOOTER -->
 <div class="mt-5 p-2 bg-secondary text-white text-center">
-  <p>@Desain by UKK RPL 2022</p>
+  <p>@Desain by Software Engineering SMKN 1 Kuwus</p>
 </div>
 
 <!-- SCRIPT JAVASCRIPT -->
@@ -120,23 +72,7 @@
 
 <script type="text/javascript">
  $(document).ready(function(){
- load_table();
-
- function load_table() 
- {
-  var id=0;
-  $.ajax({
-     url: "proses/load_table.php",
-     method: "POST",
-     data:{ids:id},
-          success: function(data)
-          {
-            //alert(data);return;
-            $("#data_table").html(data).refresh;
-          }
-        });
-  }
-
+ 
   $("#id_proses").click(function(){
     var proses    = $("#proses").val();
     var idproses  = $("#id_proses").val();
