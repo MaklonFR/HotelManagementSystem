@@ -1,5 +1,11 @@
 <?php
-  include "../includes/koneksi.php";
+      if (!isset($_SESSION)) 
+        {
+        session_start();       
+        }
+  	   if(isset($_SESSION['admin'])){
+    	  header('location: home.php');
+  	  }
 ?>
 
 <!DOCTYPE html>
@@ -39,27 +45,26 @@
  <h2 class="text-center" >LOGIN</h2>
  <h6 class="text-center">Silahkan masukan username dan password anda!</h6>
  
-   <div class="row" id="login"> 
+   <div class="row" id="dlogin"> 
     <form action="" id="flogin">
       <div class="input-group flex-nowrap mt-2 mb-2">
         <span class="input-group-text" id="addon-wrapping">@</span>
         <input type="text" class="form-control" 
-               placeholder="Username" aria-label="Username" 
+               placeholder="Username" id="username" aria-label="Username" 
                aria-describedby="addon-wrapping">
       </div>
       <div class="input-group flex-nowrap mt-2 mb-2">
-        <span class="input-group-text" id="addon-wrapping">@</span>
-        <input type="text" class="form-control" 
+        <span class="input-group-text" id="addon-wrapping">P</span>
+        <input type="text" id="password" class="form-control" 
                placeholder="Password" aria-label="Password" 
                aria-describedby="addon-wrapping">
       </div>
-      <button type="button" class="btn btn-primary">Login</button>
+      <button type="button" id="proses_login" class="btn btn-primary">Login</button>
       <button type="button" class="btn btn-light">Cancel</button>
     </form>
   </div>
 
 </div>
-
 
 <!-- SCRIPT FOOTER -->
 <div class="mt-5 p-2 bg-secondary text-white text-center">
@@ -73,24 +78,28 @@
 <script type="text/javascript">
  $(document).ready(function(){
  
-  $("#id_proses").click(function(){
-    var proses    = $("#proses").val();
-    var idproses  = $("#id_proses").val();
-
+  $("#proses_login").click(function(){
+    var user    = $("#username").val();
+    var pass    = $("#password").val();
+    if ( (username=="") || (password=="") )
+    {
+      alert("Field belum diisi!"); return;
+    }
      $.ajax({
-     url: "proses/proses_check.php",
+     url: "proses/login_resepsionis.php",
      method: "POST",
-     data:{ids:idproses, proses:proses},
+     data:{username:username, password:password},
           success: function(data)
           {
            if (data=="OK") 
             {
-              alert("BERHASIL DIUBAH!");
-              window.location.href="index.php";
+              alert("Login Successfuly!");
+              window.location.href="home.php";
 		        } 
              if (data=="ERROR") 
               {
-               alert("GAGAL DIUBAH!")
+                document.getElementById("flogin").reset();
+                alert("Terjadi kesalahan! Error Username dan Password");
 	            }
           }
         });

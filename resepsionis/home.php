@@ -1,5 +1,5 @@
 <?php
-  include "../includes/koneksi.php";
+	include '../includes/session.php';
 ?>
 
 <!DOCTYPE html>
