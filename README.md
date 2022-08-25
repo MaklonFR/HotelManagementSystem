@@ -45,7 +45,7 @@ HALAMAN ADMIN-FASILITAS UMUM
 
 
 
-Link Demo : https://ukk-rpl-2022.smkn1kuwus.sch.id/
+Link Demo : https://e-hotel.smkn1kuwus.sch.id/
 
 Link Tutorial Youtube:
 https://www.youtube.com/channel/UCmIL-UoO0RNQBHPrsbBTJmw/featured
